@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Paper } from 'material-ui';
 import { SidebarStyles } from './Sidebar.styles';
 
 
@@ -10,7 +11,9 @@ const propTypes = {
 class Sidebar extends Component {
   render() {
     return (
-      <SidebarStyles>{this.props.children}</SidebarStyles>
+      <SidebarStyles>
+        {this.props.children}
+      </SidebarStyles>
     );
   }
 }

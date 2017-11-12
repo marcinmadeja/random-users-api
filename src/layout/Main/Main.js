@@ -9,7 +9,9 @@ const propTypes = {
 class Main extends Component {
   render() {
     return (
-      <MainStyles>{this.props.children}</MainStyles>
+      <MainStyles>
+        {this.props.children}
+      </MainStyles>
     );
   }
 }

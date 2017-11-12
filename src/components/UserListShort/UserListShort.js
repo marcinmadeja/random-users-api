@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import List, { ListItem, ListItemText } from 'material-ui/List';
-import Avatar from 'material-ui/Avatar';
-import FolderIcon from 'material-ui-icons/Folder';
-
+import List from 'material-ui/List';
 import UserListShortItem from './UserListShortItem';
 
 class UserListShorter extends Component {
@@ -18,8 +15,6 @@ class UserListShorter extends Component {
   }
 
   render() {
-    console.log(this.props);
-    
     return (
       <div>
         {this.renderList()}
