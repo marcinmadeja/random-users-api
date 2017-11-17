@@ -29,8 +29,6 @@ const UserListItem = ({ user, classes }) => {
     cell,
   } = user;
 
-  console.log(user);
-
   return (
     <Paper className={classes.paper}>
       <CardContainer>
