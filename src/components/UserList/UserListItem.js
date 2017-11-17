@@ -6,6 +6,10 @@ import SocialPerson from 'material-ui-icons/Person';
 import CommunicationEmail from 'material-ui-icons/Email';
 import CommunicationPhone from 'material-ui-icons/Phone';
 import HardwarePhoneAndroid from 'material-ui-icons/PhoneAndroid';
+import SocialLocationCity from 'material-ui-icons/LocationCity';
+import MapsStreetview from 'material-ui-icons/Streetview';
+import MapsLocalPostOffice from 'material-ui-icons/LocalPostOffice';
+import SocialPublic from 'material-ui-icons/Public';
 import { 
   CardContainer,
   UserData,
@@ -43,10 +47,10 @@ const UserListItem = ({ user, classes }) => {
 
         <UserData>
           <ul>
-            <li><SocialPerson />{street}</li>
-            <li><CommunicationEmail />{city}</li>
-            <li><CommunicationPhone />{state}</li>
-            <li><HardwarePhoneAndroid />{postcode}</li>
+            <li><MapsStreetview />{street}</li>
+            <li><SocialLocationCity />{city}</li>
+            <li><SocialPublic />{state}</li>
+            <li><MapsLocalPostOffice />{postcode}</li>
           </ul>        
         </UserData>
       </CardContainer>
