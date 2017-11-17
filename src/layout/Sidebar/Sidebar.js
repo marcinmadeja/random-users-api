@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Paper } from 'material-ui';
-import { SidebarStyles } from './Sidebar.styles';
-
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -11,9 +8,9 @@ const propTypes = {
 class Sidebar extends Component {
   render() {
     return (
-      <SidebarStyles>
+      <div>
         {this.props.children}
-      </SidebarStyles>
+      </div>
     );
   }
 }

@@ -6,3 +6,9 @@ export const SidebarStyles = styled.div`
 	padding-left: ${gutter};
 	padding-right: ${gutter};
 `;
+
+export const MainStyles = styled.div`
+width: 70%;
+padding-left: ${gutter};
+padding-right: ${gutter};
+`;

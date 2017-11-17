@@ -9,7 +9,7 @@ class UserList extends Component {
     const { users } = this.props;
     return (
       <div>
-        {users.map(user => <UserListShortItem key={user.id.value} user={user} />)}
+        {users.map(user => <UserListShortItem key={user.cell} user={user} />)}
       </div>
     );
   }

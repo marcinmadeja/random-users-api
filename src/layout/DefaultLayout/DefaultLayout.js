@@ -4,6 +4,8 @@ import Main from 'layout/Main/Main';
 import Sidebar from 'layout/Sidebar/Sidebar';
 import { Container, Row } from 'styled-components/main';
 
+import { MainStyles, SidebarStyles } from './DefaultLayout.styles';
+
 const propTypes = {
   sidebar: PropTypes.node.isRequired,
   main: PropTypes.node.isRequired,
@@ -14,9 +16,13 @@ class DefaultLayout extends Component {
     return (
       <Container>
         <Row>
-          <Main>{this.props.main}</Main>
+          <MainStyles>
+            <Main>{this.props.main}</Main>
+          </MainStyles>
           
-          <Sidebar>{this.props.sidebar}</Sidebar>
+          <SidebarStyles>
+            <Sidebar>{this.props.sidebar}</Sidebar>
+          </SidebarStyles>
         </Row>
       </Container>
     );
