@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import List from 'material-ui/List';
 import UserListShortItem from './UserListItem';
+
+const propTypes = {
+  users: PropTypes.arrayOf(PropTypes.object),
+};
+
+const defaultProps = {
+  users: [],
+};
 
 class UserList extends Component {
   renderList() {
@@ -22,5 +29,8 @@ class UserList extends Component {
     );
   }
 }
+
+UserList.propTypes = propTypes;
+UserList.defaultProps = defaultProps;
 
 export default UserList;

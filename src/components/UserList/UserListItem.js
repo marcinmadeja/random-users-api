@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { withStyles } from 'material-ui/styles';
 import { Avatar, Paper } from 'material-ui';
@@ -16,6 +17,21 @@ import {
   UserListItemStyles,
 } from './UserList.styles';
 
+
+const propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.shape({
+      first: PropTypes.string.isRequired,
+      last: PropTypes.string.isRequired,
+    }),
+  }),
+  classes: PropTypes.object,
+};
+
+const defaultProps = {
+  user: null,
+  classes: {},
+};
 
 const UserListItem = ({ user, classes }) => {
   const { 
@@ -55,5 +71,8 @@ const UserListItem = ({ user, classes }) => {
     </Paper>
   );
 };
+
+UserListItem.propTypes = propTypes;
+UserListItem.defaultProps = defaultProps;
 
 export default withStyles(UserListItemStyles)(UserListItem);

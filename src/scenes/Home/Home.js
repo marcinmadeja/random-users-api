@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUsers } from 'services/api/users/users-api';
+import { getUsersList } from 'services/api/users/users-api';
 import UserList from 'components/UserList/UserList';
 
 class Home extends Component {
@@ -15,11 +15,11 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    getUsers(this.usersLimit, this.setUsers);
+    this.setUsers();
   }
 
-  setUsers(users) {
-    users = Array.isArray(users) ? users : [];
+  async setUsers() {
+    const users = await getUsersList(this.usersLimit);
     this.setState({ users });
   }
 

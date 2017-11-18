@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Paper } from 'material-ui';
-import { getUsers } from 'services/api/users/users-api';
+import { getUsersList } from 'services/api/users/users-api';
 import UserListShort from 'components/UserListShort/UserListShort';
 
 import { Title } from './SidebarUserList.styles';
@@ -18,11 +18,11 @@ class SidebarUserList extends Component {
   }
 
   componentDidMount() {
-    getUsers(10, this.setUsers);
+    this.setUsers();
   }
 
-  setUsers(users) {
-    users = Array.isArray(users) ? users : [];
+  async setUsers() {
+    const users = await getUsersList(10);
     this.setState({ users });
   }
 

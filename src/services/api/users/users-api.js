@@ -1,14 +1,24 @@
 const baseLink = 'https://randomuser.me/api/?';
-const emptyFunction = () => {};
 
-export async function getUsers(number, cb = emptyFunction, cbError = emptyFunction) {
+export async function getUsersList(number) {
+  try {
+    const userList = await getUsers(number);
+    if (userList.error) throw new Error({ label: userList.error });
+    return userList.results;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+
+export async function getUsers(number) {
   number = parseInt(number, 10);
   const endpoint = `${baseLink}results=${number}`;
 
   try {
     const res = await fetch(endpoint);
     const userList = await res.json();
-    cb(userList.results, userList.info);
+    return userList;
   } catch (error) {
     console.log(error);
   }
