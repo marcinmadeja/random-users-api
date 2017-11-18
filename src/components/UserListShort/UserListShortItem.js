@@ -3,9 +3,23 @@ import PropTypes from 'prop-types';
 
 import { ListItem, ListItemText } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import FolderIcon from 'material-ui-icons/Folder';
+
+const propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.shape({
+      first: PropTypes.string.isRequired,
+      last: PropTypes.string.isRequired,
+    }),
+  }),
+};
+
+const defaultProps = {
+  user: null,
+};
 
 const UserListShortItem = ({ user }) => {
+  if (!user) return null;
+
   const { 
     picture: { thumbnail: avatar },
     name: { first, last },
@@ -21,5 +35,8 @@ const UserListShortItem = ({ user }) => {
     </ListItem>
   );
 };
+
+UserListShortItem.propTypes = propTypes;
+UserListShortItem.defaultProps = defaultProps;
 
 export default UserListShortItem;
