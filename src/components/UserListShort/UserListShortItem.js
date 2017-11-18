@@ -1,25 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { typesUserListItem } from 'constants/propTypes/userPropTypes';
 
 import { ListItem, ListItemText } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 
 const propTypes = {
-  user: PropTypes.shape({
-    name: PropTypes.shape({
-      first: PropTypes.string.isRequired,
-      last: PropTypes.string.isRequired,
-    }),
-  }),
-};
-
-const defaultProps = {
-  user: null,
+  user: typesUserListItem.isRequired,
 };
 
 const UserListShortItem = ({ user }) => {
-  if (!user) return null;
-
   const { 
     picture: { thumbnail: avatar },
     name: { first, last },
@@ -37,6 +26,5 @@ const UserListShortItem = ({ user }) => {
 };
 
 UserListShortItem.propTypes = propTypes;
-UserListShortItem.defaultProps = defaultProps;
 
 export default UserListShortItem;

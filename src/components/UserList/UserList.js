@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { typesUserList } from 'constants/propTypes/userPropTypes';
 
 import UserListShortItem from './UserListItem';
 
 const propTypes = {
-  users: PropTypes.arrayOf(PropTypes.object),
+  users: typesUserList,
 };
 
 const defaultProps = {

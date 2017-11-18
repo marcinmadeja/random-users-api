@@ -2,10 +2,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { singleUser } from 'tests/variables';
-import UserListShortItem from '../UserListShortItem';
+import UserListItem from '../UserListItem';
 
-describe('UserListShortItem', () => {
-  const component = renderer.create(<UserListShortItem user={singleUser} />);
+describe('UserListItem', () => {
+  const component = renderer.create(<UserListItem user={singleUser} />);
 
   it('Render correctly with user data', () => {
     const tree = component.toJSON();

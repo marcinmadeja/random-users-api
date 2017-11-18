@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { typesUserList } from 'constants/propTypes/userPropTypes';
 
 import List from 'material-ui/List';
 import UserListShortItem from './UserListShortItem';
 
 const propTypes = {
-  users: PropTypes.arrayOf(PropTypes.object),
+  users: typesUserList,
 };
 
 const defaultProps = {
