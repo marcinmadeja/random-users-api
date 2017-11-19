@@ -11,3 +11,8 @@ export const Row = styled.div`
 	display: flex;
 	margin: 0 -${gutter};
 `;
+
+export const Col = styled.div`
+	padding-left: ${gutter};
+	padding-right: ${gutter};
+`;

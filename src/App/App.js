@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TopMenu from 'layout/TopMenu/TopMenu';
 import DefaultLayout from 'layout/DefaultLayout/DefaultLayout';
+import FullWidthLayout from 'layout/FullWidthLayout/FullWidthLayout';
+
 import Nav from 'components/Nav/Nav';
 import Home from 'scenes/Home/Home';
 import About from 'scenes/About/About';
@@ -36,7 +38,17 @@ class App extends Component {
                 sidebar={<SidebarUserList />}
               />
             )}
-          />          
+          />
+
+          <Route 
+            exact 
+            path="/full-list"
+            render={() => (
+              <FullWidthLayout
+                main={<Home />}
+              />
+            )}
+          />           
         </div>
       </Router>
     );
