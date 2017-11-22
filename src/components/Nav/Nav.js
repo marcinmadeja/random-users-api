@@ -11,8 +11,9 @@ class Nav extends Component {
         <Toolbar>
           <NavStyles>
             <li><NavLink to="/" exact activeClassName="selected">Home</NavLink></li>
-            <li><NavLink to="/about" exact activeClassName="selected">About</NavLink></li>       
-            <li><NavLink to="/full-list" exact activeClassName="selected">Full list</NavLink></li>       
+            <li><NavLink to="/about" exact activeClassName="selected">About</NavLink></li>
+            <li><NavLink to="/full-list" exact activeClassName="selected">Full list</NavLink></li>
+            <li><NavLink to="/filtered-list" exact activeClassName="selected">Filtered list</NavLink></li>
           </NavStyles>
         </Toolbar>
       </AppBar>
