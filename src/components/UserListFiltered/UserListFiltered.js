@@ -11,7 +11,7 @@ const defaultProps = {
   users: [],
 };
 
-const UserList = ({ users }) => {
+const UserListFiltered = ({ users }) => {
   return (
     <div>
       {users.map(user => <ListItem key={user.cell} user={user} />)}
@@ -19,7 +19,7 @@ const UserList = ({ users }) => {
   );
 };
 
-UserList.propTypes = propTypes;
-UserList.defaultProps = defaultProps;
+UserListFiltered.propTypes = propTypes;
+UserListFiltered.defaultProps = defaultProps;
 
-export default UserList;
+export default UserListFiltered;

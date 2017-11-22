@@ -18,8 +18,8 @@ class App extends Component {
             <Nav />
           </TopMenu>
 
-          <Route 
-            exact 
+          <Route
+            exact
             path="/"
             render={() => (
               <DefaultLayout
@@ -29,8 +29,8 @@ class App extends Component {
             )}
           />
 
-          <Route 
-            exact 
+          <Route
+            exact
             path="/about"
             render={() => (
               <DefaultLayout
@@ -40,15 +40,26 @@ class App extends Component {
             )}
           />
 
-          <Route 
-            exact 
+          <Route
+            exact
             path="/full-list"
             render={() => (
               <FullWidthLayout
                 main={<Home />}
               />
             )}
-          />           
+          />
+
+          <Route
+            exact
+            path="/filtered-list"
+            render={() => (
+              <DefaultLayout
+                main={<About />}
+                sidebar={<SidebarUserList />}
+              />
+            )}
+          />
         </div>
       </Router>
     );

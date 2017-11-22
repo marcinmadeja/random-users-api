@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserListShortItem Render correctly with user data 1`] = `
+exports[`ListItem Render correctly with user data 1`] = `
 <li
   className="MuiButtonBase-root-11 MuiListItem-root-1 MuiListItem-gutters-8 MuiListItem-button-9 MuiListItem-default-4"
   disabled={false}
