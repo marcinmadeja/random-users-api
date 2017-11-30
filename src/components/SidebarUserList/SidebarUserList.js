@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
 import { Paper } from 'material-ui';
-import { getUsersList } from 'services/api/users/users-api';
+import UsersApi from 'services/api/users/users-api';
 import UserListShort from 'components/UserListShort/UserListShort';
 
 import { Title } from './SidebarUserList.styles';
+
+const usersApi = new UsersApi();
 
 class SidebarUserList extends Component {
   constructor(props) {
@@ -22,13 +24,13 @@ class SidebarUserList extends Component {
   }
 
   async setUsers() {
-    const users = await getUsersList(10);
+    const users = await usersApi.getUsersList(10);
     this.setState({ users });
   }
 
   render() {
     const { loading, users } = this.state;
-    
+
     return (
       <Paper elevation={2}>
         <Title>Most popular</Title>

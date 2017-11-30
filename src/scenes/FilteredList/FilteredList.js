@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { getUsersList } from 'services/api/users/users-api';
+import UsersApi from 'services/api/users/users-api';
 import { Col_3_12, Col_9_12, Row } from 'styled-components/main';
 import UserList from 'components/UserBoxList/UserBoxList';
 import FilterColumn from 'components/FilterColumn/FilterColumn';
+
+const usersApi = new UsersApi();
 
 class FilteredList extends Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class FilteredList extends Component {
   }
 
   async setUsers() {
-    const users = await getUsersList(this.usersLimit);
+    const users = await usersApi.getUsersList(this.usersLimit);
     this.setState({ users });
   }
 

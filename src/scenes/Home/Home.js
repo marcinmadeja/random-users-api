@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { getUsersList } from 'services/api/users/users-api';
+import UsersApi from 'services/api/users/users-api';
 import UserList from 'components/UserList/UserList';
+
+const usersApi = new UsersApi();
 
 class Home extends Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class Home extends Component {
   }
 
   async setUsers() {
-    const users = await getUsersList(this.usersLimit);
+    const users = await usersApi.getUsersList(this.usersLimit);
     this.setState({ users });
   }
 
