@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TopMenu from 'layout/TopMenu/TopMenu';
 import DefaultLayout from 'layout/DefaultLayout/DefaultLayout';
 import FullWidthLayout from 'layout/FullWidthLayout/FullWidthLayout';
+import CustomLayout from 'layout/CustomLayout/CustomLayout';
 
 import Nav from 'components/Nav/Nav';
 import Home from 'scenes/Home/Home';
 import About from 'scenes/About/About';
+import FilteredList from 'scenes/FilteredList/FilteredList';
 import SidebarUserList from 'components/SidebarUserList/SidebarUserList';
 
 class App extends Component {
@@ -54,10 +56,9 @@ class App extends Component {
             exact
             path="/filtered-list"
             render={() => (
-              <DefaultLayout
-                main={<About />}
-                sidebar={<SidebarUserList />}
-              />
+              <CustomLayout>
+                <FilteredList />
+              </CustomLayout>
             )}
           />
         </div>

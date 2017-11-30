@@ -1,7 +1,7 @@
 import React from 'react';
 import { typesUserList } from 'constants/propTypes/userPropTypes';
-
 import ListItem from './ListItem';
+import { UserListStyles } from './UserBoxList.styles';
 
 const propTypes = {
   users: typesUserList,
@@ -13,9 +13,9 @@ const defaultProps = {
 
 const UserListFiltered = ({ users }) => {
   return (
-    <div>
+    <UserListStyles>
       {users.map(user => <ListItem key={user.cell} user={user} />)}
-    </div>
+    </UserListStyles>
   );
 };
 

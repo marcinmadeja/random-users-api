@@ -11,7 +11,7 @@ module.exports = {
     "import/resolver": {
       "node": { "paths": [ "./src/" ] }
     }
-  },  
+  },
   "extends": ["airbnb"],
   "rules": {
     "arrow-body-style": 0,
@@ -47,6 +47,7 @@ module.exports = {
     "prefer-rest-params": 1,
     "jsx-a11y/no-static-element-interactions": 0,
     "react/forbid-prop-types": 1,
+    "react/jsx-pascal-case": 0,
     "react/no-array-index-key": 1,
     "no-extra-boolean-cast": 0,
   }

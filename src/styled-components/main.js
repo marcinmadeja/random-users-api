@@ -9,12 +9,20 @@ export const Container = styled.div`
 
 export const Row = styled.div`
 	display: flex;
-	margin: 0 -${gutter};
+	margin: 0 -${gutter}px;
 `;
 
 export const Col = styled.div`
-	padding-left: ${gutter};
-	padding-right: ${gutter};
+	padding-left: ${gutter}px;
+	padding-right: ${gutter}px;
+`;
+
+export const Col_9_12 = Col.extend`
+	width: 75%;
+`;
+
+export const Col_3_12 = Col.extend`
+	width: 25%;
 `;
 
 export const MainTitle = styled.h1`
