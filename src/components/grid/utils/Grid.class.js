@@ -21,7 +21,7 @@ class Grid {
         direction: 'ge',
         position: 5,
       },
-      l: {
+      lg: {
         breakpoint: 992,
         container: 960,
         direction: 'ge',
@@ -33,7 +33,7 @@ class Grid {
         direction: 'ge',
         position: 3,
       },
-      s: {
+      sm: {
         breakpoint: 576,
         container: 540,
         direction: 'ge',
