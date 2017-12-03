@@ -6,6 +6,8 @@ class Grid {
     this.gutterRaw = this.clearUnit(this.gutter);
     this.columns = 12;
 
+    this.allowedDirection = ['up', 'down', 'only', 'between'];
+
     this.settings = {
       xxl: {
         breakpoint: 1900,
@@ -51,6 +53,9 @@ class Grid {
     this.multiplyUnitValue = this.multiplyUnitValue.bind(this);
     this.push = this.push.bind(this);
     this.pull = this.pull.bind(this);
+    this.mediaBreakpointUp = this.mediaBreakpointUp.bind(this);
+    this.mediaBreakpointDown = this.mediaBreakpointDown.bind(this);
+    this.mediaBreakpointBetween = this.mediaBreakpointBetween.bind(this);
   }
 
   multiplyUnitValue(value, multiplier) {
@@ -153,6 +158,44 @@ class Grid {
       });
 
     return breakpointNames;
+  }
+
+  mediaBreakpointUp(breakpointName, style) {
+    const breakpointDetails = this.settings[breakpointName];
+    if (!breakpointDetails) return null;
+    const { breakpoint } = breakpointDetails;
+
+    const newStyle = `
+      @media (min-width: ${breakpoint}${this.unit}) { ${style} }
+    `;
+
+    return newStyle;
+  }
+
+  mediaBreakpointDown(breakpointName, style) {
+    const breakpointDetails = this.settings[breakpointName];
+    if (!breakpointDetails) return null;
+    const { breakpoint } = breakpointDetails;
+
+    const newStyle = `
+      @media (max-width: ${breakpoint - 1}${this.unit}) { ${style} }
+    `;
+
+    return newStyle;
+  }
+
+  mediaBreakpointBetween(breakpointNameUp, breakpointNameDown, style) {
+    const breakpointUpDetails = this.settings[breakpointNameUp];
+    const breakpointDownDetails = this.settings[breakpointNameDown];
+    if (!breakpointUpDetails || !breakpointDownDetails) return null;
+    const breakpointUp = breakpointUpDetails.breakpoint;
+    const breakpointDown = breakpointDownDetails.breakpoint;
+
+    const newStyle = `
+      @media (min-width: ${breakpointUp}${this.unit}) and (max-width: ${breakpointDown - 1}${this.unit}) { ${style} }
+    `;
+
+    return newStyle;
   }
 
   sortBreakpoints(a, b) {
