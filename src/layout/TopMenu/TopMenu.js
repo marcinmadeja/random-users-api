@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'styled-components/main';
+import { Container } from 'components/grid';
 import { MenuStyles } from './TopMenu.styles';
 
 const propTypes = {

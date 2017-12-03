@@ -23,22 +23,22 @@ const FilterColumn = ({ gender, handleChange }) => {
           <FormControlLabel
             control={
               <Checkbox
-                checked={gender.includes('man')}
+                checked={gender.includes('male')}
                 onChange={handleChange}
-                value="man"
+                value="male"
               />
             }
-            label="man"
+            label="male"
           />
           <FormControlLabel
             control={
               <Checkbox
-                checked={gender.includes('woman')}
+                checked={gender.includes('female')}
                 onChange={handleChange}
-                value="woman"
+                value="female"
               />
             }
-            label="woman"
+            label="female"
           />
         </FormGroup>
       </FormControl>

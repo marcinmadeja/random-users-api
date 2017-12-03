@@ -1,15 +1,17 @@
-import { gutter } from 'constants/style-settings';
+import grid from 'components/grid';
 import styled from 'styled-components';
+
+const { gutter, multiplyUnitValue } = grid;
 
 export const UserListStyles = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -${gutter}px;
+  margin: 0 -${gutter};
 `;
 
 export const ListItemStyles = styled.div`
-  width: calc(25% - ${gutter * 2}px);
-  margin: 0 ${gutter}px ${gutter * 2}px;
+  width: calc(25% - ${multiplyUnitValue(gutter, 2)});
+  margin: 0 ${gutter} ${multiplyUnitValue(gutter, 2)};
 `;
 
 export const CardContainer = styled.div`

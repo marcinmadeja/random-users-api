@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UsersApi from 'services/api/users/users-api';
-import { Col_3_12, Col_9_12, Row } from 'styled-components/main';
+import { Container, Row, Col } from 'components/grid';
 import UserList from 'components/UserBoxList/UserBoxList';
 import FilterColumn from 'components/FilterColumn/FilterColumn';
 
@@ -9,56 +9,63 @@ const usersApi = new UsersApi();
 class FilteredList extends Component {
   constructor(props) {
     super(props);
+
+    this.usersLimit = 100;
+    this.searchUsers = this.searchUsers.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
     this.state = {
       users: [],
       loading: true,
-      gender: ['man', 'woman'],
+      searchSettings: {
+        page: 1,
+        results: this.usersLimit,
+        gender: [],
+      },
     };
-
-    this.usersLimit = 100;
-    this.setUsers = this.setUsers.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    this.setUsers();
+    this.searchUsers();
   }
 
-  async setUsers() {
-    const users = await usersApi.getUsersList(this.usersLimit);
+  async searchUsers() {
+    const users = await usersApi.searchUsers(this.state.searchSettings);
     this.setState({ users });
   }
 
   handleChange(e) {
     const { value } = e.target;
-    const isChecked = this.state.gender.includes(value);
+    const isChecked = this.state.searchSettings.gender.includes(value);
     if (isChecked) {
       this.setState((oldState) => {
-        return {
-          gender: oldState.gender.filter(item => item !== value),
-        };
-      });
+        const searchSettings = Object.assign(oldState.searchSettings, {
+          gender: oldState.searchSettings.gender.filter(item => item !== value),
+        });
+        return { searchSettings };
+      }, this.searchUsers);
     } else {
       this.setState((oldState) => {
-        return {
-          gender: [...oldState.gender, value],
-        };
-      });
+        const searchSettings = Object.assign(oldState.searchSettings,
+          { gender: [...oldState.searchSettings.gender, value] }
+        );
+        return { searchSettings };
+      }, this.searchUsers);
     }
   }
 
   render() {
-    const { loading, users, gender } = this.state;
+    const { loading, users, searchSettings } = this.state;
 
     return (
       <Row>
-        <Col_9_12>
+        <Col md={9}>
           <UserList users={users} loading={loading} />
-        </Col_9_12>
+        </Col>
 
-        <Col_3_12>
-          <FilterColumn gender={gender} handleChange={this.handleChange} />
-        </Col_3_12>
+        <Col md={3}>
+          <FilterColumn gender={searchSettings.gender} handleChange={this.handleChange} />
+        </Col>
       </Row>
     );
   }

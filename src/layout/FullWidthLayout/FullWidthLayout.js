@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'styled-components/main';
+import { Container } from 'components/grid';
 
 const propTypes = {
   main: PropTypes.node.isRequired,

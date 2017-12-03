@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TopMenu from 'layout/TopMenu/TopMenu';
 import DefaultLayout from 'layout/DefaultLayout/DefaultLayout';
 import FullWidthLayout from 'layout/FullWidthLayout/FullWidthLayout';
-import CustomLayout from 'layout/CustomLayout/CustomLayout';
 
 import Nav from 'components/Nav/Nav';
 import Home from 'scenes/Home/Home';
 import About from 'scenes/About/About';
 import FilteredList from 'scenes/FilteredList/FilteredList';
 import SidebarUserList from 'components/SidebarUserList/SidebarUserList';
+import { Container, Row, Col } from 'components/grid';
 
 class App extends Component {
   render() {
@@ -56,9 +56,9 @@ class App extends Component {
             exact
             path="/filtered-list"
             render={() => (
-              <CustomLayout>
+              <Container>
                 <FilteredList />
-              </CustomLayout>
+              </Container>
             )}
           />
         </div>

@@ -50,5 +50,6 @@ module.exports = {
     "react/jsx-pascal-case": 0,
     "react/no-array-index-key": 1,
     "no-extra-boolean-cast": 0,
+    "react/no-unused-state": 1,
   }
 }

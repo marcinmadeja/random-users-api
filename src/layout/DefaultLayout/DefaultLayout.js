@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Main from 'layout/Main/Main';
 import Sidebar from 'layout/Sidebar/Sidebar';
-import { Container, Row } from 'styled-components/main';
-
-import { MainStyles, SidebarStyles } from './DefaultLayout.styles';
+import { Container, Row, Col } from 'components/grid';
 
 const propTypes = {
   sidebar: PropTypes.node.isRequired,
@@ -16,13 +14,13 @@ class DefaultLayout extends Component {
     return (
       <Container>
         <Row>
-          <MainStyles>
+          <Col md={8}>
             <Main>{this.props.main}</Main>
-          </MainStyles>
-          
-          <SidebarStyles>
+          </Col>
+
+          <Col md={4}>
             <Sidebar>{this.props.sidebar}</Sidebar>
-          </SidebarStyles>
+          </Col>
         </Row>
       </Container>
     );
