@@ -13,9 +13,11 @@ const defaultProps = {
   children: null,
 };
 
-const Row = ({ children }) => {
+const Row = (props) => {
+  const { children } = props;
+
   return (
-    <RowStyled>
+    <RowStyled {...props}>
       {children}
     </RowStyled>
   );

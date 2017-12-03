@@ -9,7 +9,7 @@ import Home from 'scenes/Home/Home';
 import About from 'scenes/About/About';
 import FilteredList from 'scenes/FilteredList/FilteredList';
 import SidebarUserList from 'components/SidebarUserList/SidebarUserList';
-import { Container, Row, Col } from 'components/grid';
+import { Container } from 'components/grid';
 
 class App extends Component {
   render() {

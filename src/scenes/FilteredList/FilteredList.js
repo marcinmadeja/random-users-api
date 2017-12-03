@@ -46,8 +46,9 @@ class FilteredList extends Component {
       }, this.searchUsers);
     } else {
       this.setState((oldState) => {
-        const searchSettings = Object.assign(oldState.searchSettings,
-          { gender: [...oldState.searchSettings.gender, value] }
+        const searchSettings = Object.assign(
+          oldState.searchSettings,
+          { gender: [...oldState.searchSettings.gender, value] },
         );
         return { searchSettings };
       }, this.searchUsers);
@@ -59,11 +60,11 @@ class FilteredList extends Component {
 
     return (
       <Row>
-        <Col md={9}>
+        <Col md={9} push={{ md: 3 }}>
           <UserList users={users} loading={loading} />
         </Col>
 
-        <Col md={3}>
+        <Col md={3} pull={{ md: 9 }}>
           <FilterColumn gender={searchSettings.gender} handleChange={this.handleChange} />
         </Col>
       </Row>

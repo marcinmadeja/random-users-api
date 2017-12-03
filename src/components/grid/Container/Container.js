@@ -13,9 +13,11 @@ const defaultProps = {
   children: null,
 };
 
-const Container = ({ children }) => {
+const Container = (props) => {
+  const { children } = props;
+
   return (
-    <ContainerStyled>
+    <ContainerStyled {...props}>
       {children}
     </ContainerStyled>
   );

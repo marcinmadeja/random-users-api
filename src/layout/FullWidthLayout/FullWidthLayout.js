@@ -9,7 +9,7 @@ const propTypes = {
 class FullWidthLayout extends Component {
   render() {
     return (
-      <Container>
+      <Container fullWidth>
         {this.props.main}
       </Container>
     );

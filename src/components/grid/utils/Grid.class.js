@@ -38,9 +38,9 @@ class Grid {
         position: 2,
       },
       xs: {
-        breakpoint: 576,
+        breakpoint: 0,
         container: 'auto',
-        direction: 'lt',
+        direction: 'ge',
         position: 1,
       },
     };
@@ -49,6 +49,8 @@ class Grid {
     this.formatColData = this.formatColData.bind(this);
     this.getContainerWidth = this.getContainerWidth.bind(this);
     this.multiplyUnitValue = this.multiplyUnitValue.bind(this);
+    this.push = this.push.bind(this);
+    this.pull = this.pull.bind(this);
   }
 
   multiplyUnitValue(value, multiplier) {
@@ -60,7 +62,10 @@ class Grid {
     return parseFloat(value);
   }
 
-  getContainerWidth() {
+  getContainerWidth(props) {
+    if (props.fullWidth) return '';
+    if (props.widthContainer) return `width: ${props.widthContainer}${this.unit}`;
+
     return Object.keys(this.settings)
       .map(size => {
         const item = this.settings[size];
@@ -93,7 +98,6 @@ class Grid {
   }
 
   formatColData(data) {
-    console.log('data', data);
     return Object.keys(data)
       .filter(key => this.settings[key])
       .filter(key => this.isNatural(data[key]))
@@ -103,6 +107,52 @@ class Grid {
         return item;
       })
       .sort(this.sortBreakpoints);
+  }
+
+  push(props) {
+    const { push } = props;
+    if (!push) return null;
+    const breakpointNames = Object.keys(push)
+      .filter(breakpointName => this.settings[breakpointName])
+      .filter(breakpointName => this.isNatural(push[breakpointName]))
+      .map(breakpointName => {
+        const breakpointDetails = this.settings[breakpointName];
+        breakpointDetails.left = push[breakpointName];
+
+        const breakpoint = breakpointDetails.direction === 'ge' ? breakpointDetails.breakpoint : (breakpointDetails.breakpoint - 1);
+        const type = breakpointDetails.direction === 'ge' ? 'min-width' : 'max-width';
+        const left = (breakpointDetails.left / this.columns) * 100;
+        return `
+          @media (${type}: ${breakpoint}${this.unit}) {
+            left: ${left}%;
+          }
+        `;
+      });
+
+    return breakpointNames;
+  }
+
+  pull(props) {
+    const { pull } = props;
+    if (!pull) return null;
+    const breakpointNames = Object.keys(pull)
+      .filter(breakpointName => this.settings[breakpointName])
+      .filter(breakpointName => this.isNatural(pull[breakpointName]))
+      .map(breakpointName => {
+        const breakpointDetails = this.settings[breakpointName];
+        breakpointDetails.right = pull[breakpointName];
+
+        const breakpoint = breakpointDetails.direction === 'ge' ? breakpointDetails.breakpoint : (breakpointDetails.breakpoint - 1);
+        const type = breakpointDetails.direction === 'ge' ? 'min-width' : 'max-width';
+        const right = (breakpointDetails.right / this.columns) * 100;
+        return `
+          @media (${type}: ${breakpoint}${this.unit}) {
+            right: ${right}%;
+          }
+        `;
+      });
+
+    return breakpointNames;
   }
 
   sortBreakpoints(a, b) {

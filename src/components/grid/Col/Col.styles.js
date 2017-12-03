@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 import grid from '../utils/Grid.class';
 
-const { gutter, getColWidth } = grid;
+const {
+  gutter,
+  getColWidth,
+  push,
+  pull,
+} = grid;
 
 export const ColStyled = styled.div`
   flex-grow: 1;
-  ${props => getColWidth(props)}
-
+  position: relative;
   padding-left: ${gutter};
   padding-right: ${gutter};
+
+  ${props => getColWidth(props)}
+  ${props => push(props)}
+  ${props => pull(props)}
 `;

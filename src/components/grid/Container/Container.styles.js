@@ -8,8 +8,7 @@ export const ContainerStyled = styled.div`
 	margin-right: auto;
 	padding-left: ${gutter};
 	padding-right: ${gutter};
-
-	${getContainerWidth()}
+	${props => getContainerWidth(props)}
 `;
 
 console.log('ContainerStyled', ContainerStyled);
