@@ -8,6 +8,8 @@ import Nav from 'components/Nav/Nav';
 import Home from 'scenes/Home/Home';
 import About from 'scenes/About/About';
 import FilteredList from 'scenes/FilteredList/FilteredList';
+import HocExamples from 'scenes/HocExamples/HocExamples';
+
 import SidebarUserList from 'components/SidebarUserList/SidebarUserList';
 import { Container } from 'components/grid';
 
@@ -58,6 +60,15 @@ class App extends Component {
             render={() => (
               <Container>
                 <FilteredList />
+              </Container>
+            )}
+          />
+          <Route
+            exact
+            path="/hoc-examples"
+            render={() => (
+              <Container>
+                <HocExamples />
               </Container>
             )}
           />

@@ -10,6 +10,3 @@ export const ContainerStyled = styled.div`
 	padding-right: ${gutter};
 	${props => getContainerWidth(props)}
 `;
-
-console.log('ContainerStyled', ContainerStyled);
-
