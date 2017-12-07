@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UsersApi from 'services/api/users/users-api';
-import { Container, Row, Col } from 'components/grid';
+import { Row, Col } from 'components/grid';
 import UserList from 'components/UserBoxList/UserBoxList';
 import FilterColumn from 'components/FilterColumn/FilterColumn';
 
