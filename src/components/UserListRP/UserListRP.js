@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import UsersApi from 'services/api/users/users-api';
 import { AlertStandard } from 'components/alerts/';
 
 const usersApi = new UsersApi();
+
+const propTypes = {
+  render: PropTypes.func.isRequired,
+};
 
 class UserListRP extends Component {
   constructor(props) {
@@ -26,10 +31,12 @@ class UserListRP extends Component {
   }
 
   render() {
-    const { isLoaded } = this.state;
+    const { isLoaded, users } = this.state;
     if (!isLoaded) return <AlertStandard msg="User list is loading..." progressBar />;
-    return this.props.render(this.state);
+    return this.props.render({ users });
   }
 }
+
+UserListRP.propTypes = propTypes;
 
 export default UserListRP;

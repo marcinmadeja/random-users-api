@@ -22,8 +22,6 @@ class RPExamples extends Component {
         <UserListRP
           render={({ users }) => <UserListShort users={users} />}
         />
-
-
       </div>
     );
   }
