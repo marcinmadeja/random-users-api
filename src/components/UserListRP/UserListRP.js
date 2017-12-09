@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UsersApi from 'services/api/users/users-api';
+import { AlertStandard } from 'components/alerts/';
 
 const usersApi = new UsersApi();
 
@@ -25,6 +26,8 @@ class UserListRP extends Component {
   }
 
   render() {
+    const { isLoaded } = this.state;
+    if (!isLoaded) return <AlertStandard msg="User list is loading..." progressBar />;
     return this.props.render(this.state);
   }
 }
