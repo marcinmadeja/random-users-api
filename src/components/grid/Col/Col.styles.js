@@ -11,6 +11,7 @@ const {
 export const ColStyled = styled.div`
   flex-grow: 1;
   position: relative;
+  width: 100%;
   padding-left: ${gutter};
   padding-right: ${gutter};
 
