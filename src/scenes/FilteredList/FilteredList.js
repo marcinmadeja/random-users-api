@@ -3,6 +3,7 @@ import UsersApi from 'services/api/users/users-api';
 import { Row, Col } from 'components/grid';
 import UserList from 'components/UserBoxList/UserBoxList';
 import FilterColumn from 'components/FilterColumn/FilterColumn';
+import OptionsBar from './OptionsBar/OptionsBar';
 
 const usersApi = new UsersApi();
 
@@ -60,6 +61,10 @@ class FilteredList extends Component {
 
     return (
       <Row>
+        <Col xs={12}>
+          <OptionsBar />
+        </Col>
+
         <Col md={9} push={{ md: 3 }}>
           <UserList users={users} loading={loading} />
         </Col>
