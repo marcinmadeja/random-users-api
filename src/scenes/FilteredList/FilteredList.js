@@ -3,8 +3,9 @@ import UsersApi from 'services/api/users/users-api';
 import { Row, Col } from 'components/grid';
 import UserList from 'components/UserBoxList/UserBoxList';
 import FilterColumn from 'components/FilterColumn/FilterColumn';
-import OptionsBar from './OptionsBar/OptionsBar';
+import { OptionsBar, OptionsBarItem } from './OptionsBar/';
 import DisplayPersons from './DisplayPersons/DisplayPersons';
+import Pagination from './Pagination/Pagination';
 
 const usersApi = new UsersApi();
 
@@ -20,12 +21,14 @@ class FilteredList extends Component {
         results: 20,
         gender: [],
       },
+      limitUsers: 2000,
     };
 
     this.usersLimit = 100;
     this.searchUsers = this.searchUsers.bind(this);
     this.handleGenderChange = this.handleGenderChange.bind(this);
     this.handleDisplayPersons = this.handleDisplayPersons.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {
@@ -60,21 +63,51 @@ class FilteredList extends Component {
 
   handleDisplayPersons(displayNumber) {
     displayNumber = parseInt(displayNumber, 10);
-    const displayPersons = { results: displayNumber };
+    const displayPersons = { results: displayNumber, page: 1 };
     const searchSettings = Object.assign(this.state.searchSettings, displayPersons);
     this.setState({ searchSettings }, () => {
       this.searchUsers();
     });
   }
 
+  handlePageChange(page) {
+    page = parseInt(page, 10);
+    const newPage = { page };
+    const searchSettings = Object.assign(this.state.searchSettings, newPage);
+    this.setState({ searchSettings }, () => {
+      this.searchUsers();
+    });
+  }
+
   render() {
-    const { loading, users, searchSettings } = this.state;
+    const {
+      loading,
+      users,
+      searchSettings,
+      searchSettings: { results },
+      searchSettings: { page },
+      limitUsers,
+    } = this.state;
 
     return (
       <Row>
         <Col xs={12}>
           <OptionsBar>
-            <DisplayPersons handleDisplayPersons={this.handleDisplayPersons} />
+            <OptionsBarItem label="Persons on page">
+              <DisplayPersons
+                handleChange={this.handleDisplayPersons}
+                selectedItem={results}
+              />
+            </OptionsBarItem>
+
+            <OptionsBarItem label="Page">
+              <Pagination
+                handleChange={this.handlePageChange}
+                page={page}
+                results={results}
+                totalPages={limitUsers}
+              />
+            </OptionsBarItem>
           </OptionsBar>
         </Col>
 

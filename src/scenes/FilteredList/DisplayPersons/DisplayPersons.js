@@ -1,39 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Select from 'material-ui/Select';
-import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 
-class DisplayPersons extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayNumber: 20,
-    };
+const propTypes = {
+  selectedItem: PropTypes.number.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
-    this.handleChange = this.handleChange.bind(this);
+const DisplayPersons = ({ selectedItem, handleChange }) => {
+  function handleLocalChange(event) {
+    handleChange(event.target.value);
   }
 
-  handleChange(event) {
-    this.setState({ displayNumber: event.target.value }, () => {
-      this.props.handleDisplayPersons(this.state.displayNumber);
-    });
-  }
+  return (
+    <div>
+      <Select
+        value={selectedItem}
+        onChange={handleLocalChange}
+      >
+        <MenuItem value={10}>10</MenuItem>
+        <MenuItem value={20}>20</MenuItem>
+        <MenuItem value={50}>50</MenuItem>
+        <MenuItem value={100}>100</MenuItem>
+      </Select>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <Select
-          value={this.state.displayNumber}
-          onChange={this.handleChange}
-        >
-          <MenuItem value={10}>10</MenuItem>
-          <MenuItem value={20}>20</MenuItem>
-          <MenuItem value={50}>50</MenuItem>
-          <MenuItem value={100}>100</MenuItem>
-        </Select>
-      </div>
-    );
-  }
-}
+DisplayPersons.propTypes = propTypes;
 
 export default DisplayPersons;
