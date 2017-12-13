@@ -1,10 +1,11 @@
 import React from 'react';
+import { Bar } from './OptionsBar.styled';
 
-const OptionsBar = () => {
+const OptionsBar = ({ children }) => {
   return (
-    <div>
-      Options bar
-    </div>
+    <Bar>
+      {children}
+    </Bar>
   );
 };
 

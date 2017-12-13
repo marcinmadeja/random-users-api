@@ -14,6 +14,8 @@ import RPExamples from 'scenes/RPExamples/RPExamples';
 import SidebarUserList from 'components/SidebarUserList/SidebarUserList';
 import { Container } from 'components/grid';
 
+import 'styles/material-elevation.css';
+
 class App extends Component {
   render() {
     return (

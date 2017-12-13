@@ -11,10 +11,10 @@ import Checkbox from 'material-ui/Checkbox';
 
 const propTypes = {
   gender: PropTypes.arrayOf(PropTypes.string).isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleGenderChange: PropTypes.func.isRequired,
 };
 
-const FilterColumn = ({ gender, handleChange }) => {
+const FilterColumn = ({ gender, handleGenderChange }) => {
   return (
     <div>
       <FormControl component="fieldset">
@@ -24,7 +24,7 @@ const FilterColumn = ({ gender, handleChange }) => {
             control={
               <Checkbox
                 checked={gender.includes('male')}
-                onChange={handleChange}
+                onChange={handleGenderChange}
                 value="male"
               />
             }
@@ -34,7 +34,7 @@ const FilterColumn = ({ gender, handleChange }) => {
             control={
               <Checkbox
                 checked={gender.includes('female')}
-                onChange={handleChange}
+                onChange={handleGenderChange}
                 value="female"
               />
             }

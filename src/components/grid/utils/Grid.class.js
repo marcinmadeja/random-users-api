@@ -1,8 +1,10 @@
+import { gutter, containerWidth } from 'styled-components/main';
+
 class Grid {
   constructor() {
     this.unit = 'px';
-    this.screenLg = `1200${this.unit}`;
-    this.gutter = `15${this.unit}`;
+    this.screenLg = `${parseInt(containerWidth, 10)}${this.unit}`;
+    this.gutter = `${parseInt(gutter, 10)}${this.unit}`;
     this.gutterRaw = this.clearUnit(this.gutter);
     this.columns = 12;
 
@@ -17,7 +19,7 @@ class Grid {
       },
       xl: {
         breakpoint: 1250,
-        container: 1200,
+        container: parseInt(this.screenLg, 10),
         direction: 'ge',
         position: 5,
       },
