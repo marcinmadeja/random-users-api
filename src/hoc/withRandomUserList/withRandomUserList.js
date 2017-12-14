@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { AlertStandard } from 'components/alerts/';
-import UsersApi from 'services/api/users/users-api';
-
-const usersApi = new UsersApi();
+import { usersApi } from 'services/api/';
 
 const withRandomUserList = ListComponent =>
   class extends Component {

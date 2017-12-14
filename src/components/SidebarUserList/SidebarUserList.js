@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
 import { Paper } from 'material-ui';
-import UsersApi from 'services/api/users/users-api';
+import { usersApi } from 'services/api/';
 import UserListShort from 'components/UserListShort/UserListShort';
 
 import { Title } from './SidebarUserList.styles';
-
-const usersApi = new UsersApi();
 
 class SidebarUserList extends Component {
   constructor(props) {
