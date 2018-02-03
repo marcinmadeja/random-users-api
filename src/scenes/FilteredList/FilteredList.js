@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { usersApi } from 'services/api/';
+import UsersApi from 'services/api/users/users-api';
 import { Row, Col } from 'components/grid';
 import UserList from 'components/UserBoxList/UserBoxList';
 import FilterColumn from 'components/FilterColumn/FilterColumn';
 import { OptionsBar, OptionsBarItem } from './OptionsBar/';
 import DisplayPersons from './DisplayPersons/DisplayPersons';
 import Pagination from './Pagination/Pagination';
+
+const usersApi = new UsersApi();
 
 class FilteredList extends Component {
   constructor(props) {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { usersApi } from 'services/api/';
+import UsersApi from 'services/api/users/users-api';
 import UserList from 'components/UserList/UserList';
+
+const usersApi = new UsersApi();
 
 class Home extends Component {
   constructor(props) {

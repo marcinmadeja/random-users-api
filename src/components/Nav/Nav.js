@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import { NavStyles } from './Nav.styles';
+import UserMenu from 'components/UserMenu/UserMenu';
+import { NavStyles, UserRight } from './Nav.styles';
 
 class Nav extends Component {
   render() {
@@ -22,13 +23,12 @@ class Nav extends Component {
             <li>
               <NavLink to="/filtered-list" exact activeClassName="selected">Filtered list</NavLink>
             </li>
-            <li>
-              <NavLink to="/hoc-examples" exact activeClassName="selected">Hoc Examples</NavLink>
-            </li>
-            <li>
-              <NavLink to="/rp-examples" exact activeClassName="selected">RP Examples</NavLink>
-            </li>
           </NavStyles>
+
+          <UserRight>
+            <UserMenu />
+          </UserRight>
+
         </Toolbar>
       </AppBar>
     );

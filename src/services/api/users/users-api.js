@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default class UsersApi {
   constructor() {
     this.baseLink = 'https://randomuser.me/api/?';
@@ -7,6 +9,14 @@ export default class UsersApi {
       page: 0,
       results: 1000,
     };
+  }
+
+  getUsersAxios(number) {
+    number = parseInt(number, 10);
+    const endpoint = `${this.baseLink}results=${number}&seed=abc`;
+    const request = axios.get(endpoint);
+
+    return request;
   }
 
   async getUsersList(number) {
@@ -26,6 +36,12 @@ export default class UsersApi {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async loginUser() {
+    const user = await this.getUsersList(1);
+    if (user.error) throw new Error({ label: user.error });
+    return user[0] || false;
   }
 
   async searchUsers(searchSettings = {}) {

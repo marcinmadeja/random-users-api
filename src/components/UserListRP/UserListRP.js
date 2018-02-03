@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { usersApi } from 'services/api/';
+import UsersApi from 'services/api/users/users-api';
 import { AlertStandard } from 'components/alerts/';
+
+const usersApi = new UsersApi();
 
 const propTypes = {
   render: PropTypes.func.isRequired,

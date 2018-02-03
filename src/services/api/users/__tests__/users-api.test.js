@@ -1,4 +1,6 @@
-import { usersApi } from 'services/api/';
+import UsersApi from '../users-api';
+
+const usersApi = new UsersApi();
 
 describe('API user test', () => {
   it('Should return results array with 10 objects', async () => {

@@ -17,3 +17,7 @@ export const NavStyles = styled.nav`
 		}
 	}
 `;
+
+export const UserRight = styled.div`
+	margin-left: auto;
+`;
