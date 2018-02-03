@@ -1,14 +1,37 @@
+/* eslint-disable */
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import UsersApi from 'services/api/users/users-api';
+import { usersApi } from 'services/api/';
 
 import UserBoxList from 'components/UserBoxList/UserBoxList';
 import { usersShortList } from 'tests/variables';
 import UserListRP from '../UserListRP';
 
-describe('ListItem', () => {
+// jest.mock('services/api/', () => {
+//   usersApi: jest.fn()
+// });
+
+jest.mock('usersApi', () => 'test');
+
+const mockResponse = (status, statusText, response) => {
+  return new window.Response(response, {
+    status: status,
+    statusText: statusText,
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
+};
+
+describe('ListItem', async () => {
+  const result = Promise.resolve(mockResponse(200, null, '{"id":"1234"}'));
+  const parsedResult = Promise.resolve({ "id": "1234" });
+  // usersApi.getUsersList.mockImplementation(() => parsedResult);
+  // console.log('usersApi', usersApi);
+
+
   // const component = shallow(<UserListRP
   //   render={(user) => <UserBoxList users={usersShortList} />}
   // />);
