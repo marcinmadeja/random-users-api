@@ -3,12 +3,15 @@ import { usersApi } from 'services/api';
 import App from 'App/App';
 
 import { connect } from 'react-redux';
-import { addUsers, loginUser } from 'app-redux/actions/actions';
+import {
+  getLoggedUser,
+  getBestUsers,
+} from 'app-redux/actions/actions';
 
 class AppWrapper extends Component {
   componentDidMount() {
-    this.setUsers();
-    this.loginUser();
+    this.props.getBestUsers();
+    this.props.getLoggedUser();
   }
 
   async setUsers() {
@@ -34,4 +37,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addUsers, loginUser })(AppWrapper);
+export default connect(mapStateToProps, { getBestUsers, getLoggedUser })(AppWrapper);

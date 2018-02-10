@@ -14,6 +14,7 @@ module.exports = {
   },
   "extends": ["airbnb"],
   "rules": {
+    "react/prop-types": 0,
     "arrow-body-style": 0,
     "no-console": 0,
     "no-unused-vars": 1,

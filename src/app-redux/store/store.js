@@ -14,5 +14,3 @@ export default function configureStore(preloadedState = null) {
     ),
   );
 }
-
-// export default createStore(rootReducer);
