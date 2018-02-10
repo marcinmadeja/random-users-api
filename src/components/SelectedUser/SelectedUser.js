@@ -14,7 +14,7 @@ import { TitleWrapper } from './SelectedUser.styles';
 
 class SelectedUser extends Component {
   render() {
-    const { selectedUser} = this.props;
+    const { selectedUser } = this.props;
 
     if (!selectedUser) return null;
     const {

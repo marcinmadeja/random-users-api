@@ -13,6 +13,11 @@ import registerServiceWorker from './registerServiceWorker';
 const preloadedState = {
   selectedUser: null,
   usersList: [],
+  loggedUser: null,
+  errorDialog: {
+    open: false,
+    msg: null,
+  },
 };
 
 const store = configureStore(preloadedState);

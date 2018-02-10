@@ -1,4 +1,11 @@
-import { ADD_USERS, LOGIN_USER, SELECT_USER, REMOVE_SELECTED_USER } from '../constants/action-type';
+import {
+  ADD_USERS,
+  LOGIN_USER,
+  SELECT_USER,
+  REMOVE_SELECTED_USER,
+  SHOW_ERROR_DIALOG,
+  HIDE_ERROR_DIALOG,
+} from '../constants/action-type';
 
 const initialState = {
   selectedUser: null,
@@ -34,6 +41,28 @@ const removeSelectedUser = (state) => {
   };
 };
 
+const showErrorSlider = (state, msg) => {
+  return {
+    ...state,
+    errorDialog: {
+      open: true,
+      msg,
+    },
+  };
+};
+
+const hideErrorSlider = (state) => {
+  const errorDialog = {
+    ...state.errorDialog,
+    open: false,
+  };
+
+  return {
+    ...state,
+    errorDialog,
+  };
+};
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_USERS:
@@ -44,6 +73,10 @@ export default (state = initialState, action) => {
       return changeSelectedUser(state, action.payload);
     case REMOVE_SELECTED_USER:
       return removeSelectedUser(state);
+    case SHOW_ERROR_DIALOG:
+      return showErrorSlider(state, action.msg);
+    case HIDE_ERROR_DIALOG:
+      return hideErrorSlider(state);
     default:
       return state;
   }

@@ -1,8 +1,12 @@
+import { usersApi } from 'services/api';
+
 import {
   ADD_USERS,
   LOGIN_USER,
   SELECT_USER,
   REMOVE_SELECTED_USER,
+  SHOW_ERROR_DIALOG,
+  HIDE_ERROR_DIALOG,
 } from '../constants/action-type';
 
 export const addUsers = (users) => ({
@@ -28,10 +32,12 @@ export const getBestUsers = (usersAmount = 10) => {
 
 const fetchUsers = (usersAmount) => {
   return dispatch => {
-    return fetch(`https://randomuser.me/api/?results=${usersAmount}`)
-      .then(response => response.json())
-      .then(json => {
-        dispatch(receiveUsers(json.results));
+    return usersApi.fetchUsersList(usersAmount)
+      .then(usersApi.getFormatedUsersList)
+      .then(usersList => dispatch(receiveUsers(usersList)))
+      .catch(error => {
+        const dialogMsg = error instanceof Error ? error.message : error;
+        dispatch(showErrorDialog(dialogMsg));
       });
   };
 };
@@ -45,11 +51,9 @@ const receiveUsers = (users) => {
 
 export const getLoggedUser = () => {
   return dispatch => {
-    return fetch('https://randomuser.me/api/?results=1')
-      .then(response => response.json())
-      .then(json => {
-        dispatch(loginUser(json.results[0]));
-      });
+    return usersApi.fetchUsersList()
+      .then(usersApi.getFormatedUser)
+      .then(loggedUser => dispatch(loginUser(loggedUser)));
   };
 };
 
@@ -58,3 +62,12 @@ export const loginUser = (user) => ({
   payload: user,
 });
 
+
+export const showErrorDialog = (error) => ({
+  type: SHOW_ERROR_DIALOG,
+  msg: error,
+});
+
+export const closeErrorDialog = () => ({
+  type: HIDE_ERROR_DIALOG,
+});

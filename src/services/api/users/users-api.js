@@ -11,12 +11,26 @@ export default class UsersApi {
     };
   }
 
-  getUsersAxios(number) {
+  fetchUsersList(number) {
     number = parseInt(number, 10);
-    const endpoint = `${this.baseLink}results=${number}&seed=abc`;
+    const endpoint = `${this.baseLink}results=${number}`;
     const request = axios.get(endpoint);
-
     return request;
+  }
+
+  getFormatedUsersList(response) {
+    return response.data.results || [];
+  }
+
+  fetchLoggedUser() {
+    const endpoint = `${this.baseLink}results=1`;
+    const request = axios.get(endpoint);
+    return request;
+  }
+
+  getFormatedUser(response) {
+    const usersList = response.data.results || [];
+    return usersList[0] || null;
   }
 
   async getUsersList(number) {
